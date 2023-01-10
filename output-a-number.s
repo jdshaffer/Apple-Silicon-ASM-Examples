@@ -3,8 +3,12 @@
 // 2023-01-08
 // Jds
 // ------------------------------------------------
-// Output the number 65
-// RUN --> ./output1 ; echo $?
+// MOV -- Move a value (65) into a register (X0)
+//
+// NOTE: T
+//
+// COMPILE  -->  make
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -13,6 +17,7 @@
 
 
 _start:
-	mov	X0, #65
-	mov	X16, #1
-	svc	#0x80
+	MOV	X0, 65					// Move the value 65 into the register X0
+
+	MOV	X16, 1					// System call to terminate this program
+	SVC	0						// Kernel call to terminate the program

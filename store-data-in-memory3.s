@@ -35,7 +35,7 @@ _end:
 
 
 .data
-.balign 4					// Request 4 bytes for our data
-info:						// Give a label for the data
-  .word 10					// Assign a value to the data
+.balign 4							// Request 4 bytes for our data
+info:								// Give a label for the data
+ 	.word 10						// Assign a value to the data
 

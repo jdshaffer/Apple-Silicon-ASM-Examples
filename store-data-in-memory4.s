@@ -22,7 +22,6 @@
 
 
 _start:
-
 	ADR	X10, numbers		// Load address of "numbers" array into X10
 
 	LDR X1, [X10]			// Loads value at first  word from address [X10] (1)

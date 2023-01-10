@@ -4,6 +4,13 @@
 // Jds
 // ------------------------------------------------
 // Print a string to the standard out (screen)
+//
+// NOTE: This example uses system and kernel calls
+//       to write to the screen, instead of using
+//       printf (shown in other examples).
+//
+// COMPILE  -->  make
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -12,19 +19,19 @@
 
 
 _start:
-	mov	X0, 1					// Tell system to use StdOut (screen)
+	MOV	X0, 1					// Tell system to use StdOut (screen)
 
-	adr	X1, helloworld			// Load address of our string
-	mov	X2, 13					// Length of message to print
+	ADR	X1, helloworld			// Load address of our string
+	MOV	X2, 13					// Length of message to print
 
-	mov	X16, 4					// Call system to write to StdOut
-	svc	0						// Call kernel to write to StdOut
+	MOV	X16, 4					// Call system to write to StdOut
+	SVC	0						// Call kernel to write to StdOut
 
 
 _end:							// Split this off to a new label for clarity
-	mov	X0, 0					// Return 0
-	mov	X16, 1					// System call to terminate this program
-	svc	0						// Kernel call to terminate the program
+	MOV	X0, 0					// Return 0
+	MOV	X16, 1					// System call to terminate this program
+	SVC	0						// Kernel call to terminate the program
 
 
 helloworld:	.ascii	"Hello World!\n"

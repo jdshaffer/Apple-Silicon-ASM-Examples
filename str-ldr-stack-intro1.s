@@ -11,6 +11,7 @@
 //         number (2) from the stack instead of both
 //         (2 and 1) from the stack. 
 //
+// COMPILE --> make
 // RUN --> ./filename ; echo $?
 // ------------------------------------------------------
 
@@ -20,19 +21,19 @@
 
 
 _start:
-	mov X1, 1
-	mov X2, 2
+	MOV X1, 1
+	MOV X2, 2
 
-	str X1, [sp, #-16]!			// Store R1 data (#1) on the stack and move SP-16
-	str X2, [sp, #-16]!			// The ! sets the registers to be used again
+	STR X1, [sp, #-16]!			// Store R1 data (#1) on the stack and move SP-16
+	STR X2, [sp, #-16]!			// The ! sets the registers to be used again
 
-	ldr X0, [sp], #+16			// Load current SP data to X0 and move SP+16 (X0 = 2)
-	ldr X0, [sp], #+16			// Load current SP data to X0 and move SP+16 (X0 = 1)
+	LDR X0, [sp], #+16			// Load current SP data to X0 and move SP+16 (X0 = 2)
+	LDR X0, [sp], #+16			// Load current SP data to X0 and move SP+16 (X0 = 1)
 
 
 _end:
-	mov	X16, 1					// System call to terminate this program
-	svc	0						// Call kernel to perform the action
+	MOV	X16, 1					// System call to terminate this program
+	SVC	0						// Call kernel to perform the action
 
 
 

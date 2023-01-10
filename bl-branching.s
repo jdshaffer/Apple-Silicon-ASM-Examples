@@ -4,7 +4,9 @@
 // Jds
 // ------------------------------------------------
 // Branching
-// RUN --> ./branch ; echo $?
+//
+// COMPILE  -->  make
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -13,10 +15,10 @@
 
 
 _start: 
-	mov	X0, 14					// Set X0 to #14
-	bl	other					// Branch to "other"
-	mov	X0, 11					// (X0 is not set to 11 because of branch)
+	MOV	X0, 14					// Set X0 to #14
+	BL	other					// Branch to "other"
+	MOV	X0, 11					// (X0 is not set to 11 because of branch)
 
 other:
-	mov	X16, 1					// System call to terminate this program
-	svc	0						// Call kernel to perform the action
+	MOV	X16, 1					// System call to terminate this program
+	SVC	0						// Call kernel to perform the action

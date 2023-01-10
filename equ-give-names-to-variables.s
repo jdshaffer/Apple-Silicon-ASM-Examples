@@ -4,7 +4,9 @@
 // Jds
 // ------------------------------------------------
 // Use EQU to give names to variables
-// RUN --> ./filename ; echo $?
+//
+// COMPILE  -->  make
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -15,9 +17,9 @@
 
 
 _start: 
-	mov	X0, #two				// Store #2 into X0 using the EQU name
+	MOV	X0, #two				// Store #2 into X0 using the EQU name
 
 
 _end:
-	mov	X16, 1					// System call to terminate this program
-	svc	0						// Call kernel to perform the action
+	MOV	X16, 1					// System call to terminate this program
+	SVC	0						// Call kernel to perform the action

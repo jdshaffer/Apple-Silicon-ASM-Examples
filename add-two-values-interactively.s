@@ -13,8 +13,8 @@
 //
 //                            o_O
 //
-// COMPILE --> make main
-// RUN --> ./filename
+// COMPILE  -->  make main
+// RUN      -->  ./filename
 // --------------------------------------------------------
 
 

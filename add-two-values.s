@@ -3,8 +3,7 @@
 // 2023-01-08
 // Jds
 // ------------------------------------------------
-// Logical Shift Left (LSL)
-// Each shift left = number x 2
+// Add two values
 //
 // COMPILE  -->  make
 // RUN      -->  ./filename ; echo $?
@@ -16,10 +15,7 @@
 
 
 _start:
-	MOV	X1, 15					// 15 in binary is 1111
-	LSL	X0, X1, 1				// Shift X1 left by 1 and store in X0
-								// Answer should be 15 x 2 = 30
-
-end:
-	MOV	X16, 1					// System call to terminate this program
-	SVC	0						// Call kernel to perform the action
+	MOV	X0, #7
+	ADD	X0, X0, #13
+	MOV	X16, #1
+	SVC	0

@@ -5,10 +5,11 @@
 // ------------------------------------------------
 // FCMP -- Compare two floating point numbers
 //
-// RUN --> ./filename
-// ------------------------------------------------
 // NOTE: Change the values in .data to test
 //       different floating point numbers
+//
+// COMPILE  -->  make main
+// RUN      -->  ./filename
 // ------------------------------------------------
 
 
@@ -43,14 +44,13 @@ nums_not_equal:
 
 end:
 	BL	_printf						// print -- reads string from X0 and data from stack
-	mov	X16, #1
-	svc	0
+	MOV	X16, #1
+	SVC	0
 
 
 
 .data
-	num_1: .double 1.234567
-	num_2: .double 1.111111
-//	num_2: .double 1.234567
-	eq_message: .asciz "The numbers are equal.\n"
-	ne_message: .asciz "The numbers are not equal.\n"
+num_1: .double 1.234567
+num_2: .double 1.111111
+eq_message: .asciz "The numbers are equal.\n"
+ne_message: .asciz "The numbers are not equal.\n"

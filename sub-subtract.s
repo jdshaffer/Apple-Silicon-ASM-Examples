@@ -4,7 +4,9 @@
 // Jds
 // ------------------------------------------------
 // Subtract two values
-// RUN --> ./subtract ; echo $?
+//
+// COMPILE --> make
+// RUN --> ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -13,7 +15,7 @@
 
 
 _start:
-	mov	X0, #20
-	sub	X0, X0, #7
-	mov	X16, #1
-	svc	#0x80
+	MOV	X0, 20					// Move the number 20 into register X0
+	SUB	X0, X0, 7				// Subtract 7 from X0 (20) and store in X0 (13)
+	MOV	X16, 1					// System call to terminate this program
+	SVC	0						// Call kernel to perform the action

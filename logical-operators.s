@@ -3,10 +3,11 @@
 // 2023-01-08
 // Jds
 // ------------------------------------------------
-// Logical Operators -- and, orr, eor, bic
+// AND, ORR, EOR, BIC -- Logical Operators
 // Uncomment the operator you wish to use
 //
-// RUN --> ./filename ; echo $?
+// COMPILE  -->  make
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -15,15 +16,15 @@
 
 
 _start:
-	mov	X1,  5					// Represents binary number      0101 =  5
-	mov	X2,  9					// Represents binary number      1001 =  9
+	MOV	X1,  5					// Represents binary number      0101 =  5
+	MOV	X2,  9					// Represents binary number      1001 =  9
 
-	and	X0, X1, X2				// Outputs X1 AND X2  =          0001 =  1
-//	orr	X0, X1, X2				// Outputs X1  OR X2  =          1110 = 13
-//	eor	X0, X1, X2				// Outputs X1 Exclusive OR X2  = 1100 = 12
-//	bic	X0, X1, X2				// Bit Clear -- Returns 0 unless top bit is 1 and bottom is 0 = 0100 = 4
+	AND	X0, X1, X2				// Outputs X1 AND X2  =          0001 =  1
+//	ORR	X0, X1, X2				// Outputs X1  OR X2  =          1110 = 13
+//	EOR	X0, X1, X2				// Outputs X1 Exclusive OR X2  = 1100 = 12
+//	BIC	X0, X1, X2				// Bit Clear -- Returns 0 unless top bit is 1 and bottom is 0 = 0100 = 4
 
 
 end:
-	mov	X16, 1					// System call to terminate this program
-	svc	0						// Call kernel to perform the action
+	MOV	X16, 1					// System call to terminate this program
+	SVC	0						// Call kernel to perform the action

@@ -3,8 +3,10 @@
 // 2023-01-08
 // Jds
 // ------------------------------------------------
-// Multiply two values
-// RUN --> ./multiply ; echo $?
+// MUL -- Multiply two values
+//
+// COMPILE  -->  make
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -13,9 +15,9 @@
 
 
 _start:
-	mov	X1, #2
-	mov	X2, #11
-	mul	X0, X1, X2
+	MOV	X1, #2
+	MOV	X2, #11
+	MUL	X0, X1, X2
 
-	mov	X16, #1
-	svc	#0x80
+	MOV	X16, #1
+	SVC	#0x80

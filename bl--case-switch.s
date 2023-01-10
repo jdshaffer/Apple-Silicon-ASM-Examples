@@ -8,7 +8,8 @@
 // Change the values in the first line (MOV X2, 1) to
 // get different results.
 //
-// RUN --> ./filename ; echo $?
+// COMPILE  -->  make main
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------------
 
 

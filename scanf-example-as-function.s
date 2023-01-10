@@ -19,35 +19,39 @@
 // ------------------------------------------------
 
 
-
 .global main
 .align 4
 
 
 main:
-    // PRINT INITIAL MESSAGE
-	ADRP	X0, message@PAGE			// Load the address of the format string for printf
+    										// --- PRINT INITIAL MESSAGE ---
+	ADRP	X0, message@PAGE				// Load the address of the format string for printf
 	ADD	X0, X0, message@PAGEOFF
-	BL	_printf							// print using formatted string in X0 and data in stack
+	BL	_printf								// print using formatted string in X0 and data in stack
 
-	// READ USER INPUT USING SCANF
-    BL read_from_keyboard				// Branch to the function read_from_keyboard
 
-	// READ NUMBER FROM DATA AND MOVE TO STACK FOR PRINTING
-	ADRP	X10, num@PAGE				// Load the address of the number to print
+											// --- READ USER INPUT USING SCANF ---
+    BL read_from_keyboard					// Branch to the function read_from_keyboard
+
+
+											// -- READ NUMBER FROM DATA AND MOVE TO STACK FOR PRINTING ---
+	ADRP	X10, num@PAGE					// Load the address of the number to print
 	ADD	X10, X10, num@PAGEOFF
-	LDR X1, [X10]						// Load the value from address X10 into X1
-	STR	X1, [SP, #-16]!					// Store the number onto the stack for printing
+	LDR X1, [X10]							// Load the value from address X10 into X1
+	STR	X1, [SP, #-16]!						// Store the number onto the stack for printing
 
-	// LOAD THE PRINTF FORMATTED MESSAGE
-	ADRP	X0, output_format@PAGE		// Load the address of our printf format string
+
+											// --- LOAD THE PRINTF FORMATTED MESSAGE ---
+	ADRP	X0, output_format@PAGE			// Load the address of our printf format string
 	ADD	X0, X0, output_format@PAGEOFF
 
 
+
 end:
-	BL	_printf							// print -- reads string from X0 and data from stack
-	mov	X16, #1
-	svc	0
+	BL	_printf								// print -- reads string from X0 and data from stack
+	MOV	X16, #1
+	SVC	0
+
 
 
 read_from_keyboard:
@@ -64,7 +68,8 @@ read_from_keyboard:
 
     LDP X29, X30, [SP], #16					// Restore frame pointer (X29) and link register (X30)
     										//    and back up the SP 16 bytes per register
-	ret
+	RET
+
 
 
 .data

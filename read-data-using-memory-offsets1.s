@@ -5,7 +5,8 @@
 // ------------------------------------------------
 // Reading Data via Memory Offsets
 //
-// RUN --> ./filename ; echo $?
+// COMPILE  -->  make
+// RUN      -->  ./filename ; echo $?
 // ------------------------------------------------
 
 
@@ -14,13 +15,13 @@
 
 
 _start:
-	ADRP	X3, primes@PAGE		// load address of "primes" data into X3
+	ADRP	X3, primes@PAGE			// load address of "primes" data into X3
 	ADD	X3, X3, primes@PAGEOFF
 
-//	LDR	X0, [X3]			// Loads value in address [X3] into X0		(2)
-//	LDR	X0, [X3, #4]		// Loads value in address [X3] + 4 bytes	(3)
-//	LDR	X0, [X3, #8]		// Loads value in address [X3] + 8 bytes	(5)
-	LDR	X0, [X3, #12]		// Loads value in address [X3] + 12 bytes	(7)
+//	LDR	X0, [X3]					// Loads value in address [X3] into X0		(2)
+//	LDR	X0, [X3, #4]				// Loads value in address [X3] + 4 bytes	(3)
+//	LDR	X0, [X3, #8]				// Loads value in address [X3] + 8 bytes	(5)
+	LDR	X0, [X3, #12]				// Loads value in address [X3] + 12 bytes	(7)
 
 
 _end:
@@ -28,10 +29,9 @@ _end:
 	SVC	0
 
 
-
 .data
-	primes:
-		.word 2
-		.word 3
-		.word 5
-		.word 7
+primes:
+	.word 2
+	.word 3
+	.word 5
+	.word 7

@@ -3,7 +3,7 @@
 // 2023-01-09
 // Jds
 // ------------------------------------------------
-// fadd -- Add two floating point numbers and print
+// FADD -- Add two floating point numbers and print
 //
 // RELATED COMMANDS:
 //    FADD = add two floats
@@ -13,7 +13,8 @@
 //    FABS = absolute value
 //    FSQR = square root
 //
-// RUN --> ./filename
+// COMPILE  -->  make
+// RUN      -->  ./filename
 // ------------------------------------------------
 
 
@@ -41,11 +42,11 @@ prepare_to_print:
 	
 end:
 	BL	_printf					// print -- reads string from X0 and data from stack
-	mov	X16, #1
-	svc	0
+	MOV	X16, #1
+	SVC	0
 
 
 .data
-	num_1: .double 1.234567
-	num_2: .double 1.111111
-	format: .asciz "1.2345 + 1.1111 = %f \n"
+num_1: .double 1.234567
+num_2: .double 1.111111
+format: .asciz "1.2345 + 1.1111 = %f \n"
