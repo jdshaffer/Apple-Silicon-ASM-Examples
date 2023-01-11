@@ -32,35 +32,35 @@ main:
 //  The main body of the program -- (int input = 123, scanf, printf)
 // -------------------------------------------------------------------------------------------------
 
-	mov x8, #123                        // Store #123 into X8 (int input = 123)
+	mov x8, #123                            // Store #123 into X8 (int input = 123)
 
 
-                                        // PREPARE TO READ IN FROM scanf
-	add x8, sp, #12						// Calculate the address of SP+12 and store in x8
-	str X8, [sp]						// Store the value of X8 (an address) on the stack
+                                                // PREPARE TO READ IN FROM scanf
+	add x8, sp, #12				// Calculate the address of SP+12 and store in x8
+	str X8, [sp]				// Store the value of X8 (an address) on the stack
 
-	adrp	x19, format@PAGE            // Get the address of the PAGE that contains format and
-                                        //    store it in x19
+	adrp	x19, format@PAGE                // Get the address of the PAGE that contains format and
+                                                //    store it in x19
 	add	x19, x19, format@PAGEOFF        // Add an offset to get to the actual address of format
-                                        //   within the PAGE (the page offset = PAGEOFF)
+                                                //   within the PAGE (the page offset = PAGEOFF)
 
 
 	mov	x0, x19                         // Copy the address of the format string (stored in x19)
-                                        //   into x0
+                                                //   into x0
 	bl	_scanf                          // scanf uses the formatting pointed to by the address
-                                        //   in X0 and stores the input at the address stored
-                                        //   at the SP (this address is X8 = SP+12). 
+                                                //   in X0 and stores the input at the address stored
+                                                //   at the SP (this address is X8 = SP+12). 
 
 
-                                        // PREPARE TO WRITE OUT WITH printf
+                                                // PREPARE TO WRITE OUT WITH printf
 	ldr	x8, [sp, #12]                   // Load contents at address SP+12 (the scanned input) 
-                                        //    into X8
+                                                //    into X8
 	str	x8, [sp]                        // Place the value of X8 onto the stack (this is the
-                                        //    data read in by scanf
+                                                //    data read in by scanf
 	mov	x0, x19                         // Copy the address of the format string (stored in x19)
-                                        //   into x0
+                                                //   into x0
 	bl	_printf                         // printf uses the formatting pointed to by the address
-                                        //    in X0 and grabs the data to print from the stack 
+                                                //    in X0 and grabs the data to print from the stack 
 
 
 
@@ -71,7 +71,7 @@ main:
 	ldp	x29, x30, [sp, #32]             // Load back FP and LP from SP+32
 	ldp	x20, x19, [sp, #16]             // Load back x20 and x19 from SP+16
 	add	sp, sp, #48                     // Roll back the SP to -(32+16) = -48
-	ret                                 // Exit the program
+	ret                                     // Exit the program
 
 
 
